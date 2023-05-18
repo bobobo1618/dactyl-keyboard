@@ -675,20 +675,20 @@ def connectors():
             hulls.append(triangle_hulls(places))
 
 
-        if column == (reduced_inner_cols-1):
-            places = []
-            places.append(key_place(web_post_bl(), column + 1, iterrows))
-            places.append(key_place(web_post_br(), column, iterrows))
-            places.append(key_place(web_post_tl(), column + 1, iterrows + 1))
-            places.append(key_place(web_post_bl(), column + 1, iterrows + 1))
-            hulls.append(triangle_hulls(places))
-        if column == (ncols - reduced_outer_cols - 1):
-            places = []
-            places.append(key_place(web_post_br(), column, iterrows))
-            places.append(key_place(web_post_bl(), column + 1, iterrows))
-            places.append(key_place(web_post_tr(), column, iterrows + 1))
-            places.append(key_place(web_post_br(), column, iterrows + 1))
-            hulls.append(triangle_hulls(places))
+        # if column == (reduced_inner_cols-1):
+        #     places = []
+        #     places.append(key_place(web_post_bl(), column + 1, iterrows))
+        #     places.append(key_place(web_post_br(), column, iterrows))
+        #     places.append(key_place(web_post_tl(), column + 1, iterrows + 1))
+        #     places.append(key_place(web_post_bl(), column + 1, iterrows + 1))
+        #     hulls.append(triangle_hulls(places))
+        # if column == (ncols - reduced_outer_cols - 1):
+        #     places = []
+        #     places.append(key_place(web_post_br(), column, iterrows))
+        #     places.append(key_place(web_post_bl(), column + 1, iterrows))
+        #     places.append(key_place(web_post_tr(), column, iterrows + 1))
+        #     places.append(key_place(web_post_br(), column, iterrows + 1))
+        #     hulls.append(triangle_hulls(places))
 
 
     return union(hulls)
@@ -1510,12 +1510,12 @@ def minidox_thumb_connectors():
                 key_place(web_post_bl(), 1, cornerrow),
                 minidox_thumb_tr_place(minidox_thumb_post_tr()),
                 key_place(web_post_br(), 1, cornerrow),
-                key_place(web_post_bl(), 2, lastrow),
+                key_place(web_post_bl(), 2, 2),
                 minidox_thumb_tr_place(minidox_thumb_post_tr()),
-                key_place(web_post_bl(), 2, lastrow),
+                key_place(web_post_bl(), 2, 2),
                 minidox_thumb_tr_place(minidox_thumb_post_br()),
-                key_place(web_post_br(), 2, lastrow),
-                key_place(web_post_bl(), 3, lastrow),
+                key_place(web_post_br(), 2, 2),
+                key_place(web_post_bl(), 3, 2),
             ]
         )
     )
@@ -3005,7 +3005,7 @@ def minidox_thumb_walls(skeleton=False):
     shape = union([shape, wall_brace(minidox_thumb_ml_place, -1, 0, minidox_thumb_post_tl(), minidox_thumb_ml_place, 0, 1, minidox_thumb_post_tl())])
     # thumb, tweeners
     shape = union([shape, wall_brace(minidox_thumb_ml_place, 0, 1, minidox_thumb_post_tr(), minidox_thumb_ml_place, 0, 1, minidox_thumb_post_tl())])
-    shape = union([shape, wall_brace(minidox_thumb_tr_place, 0, -1, minidox_thumb_post_br(), (lambda sh: key_place(sh, 3, lastrow)), 0, -1, web_post_bl())])
+    shape = union([shape, wall_brace(minidox_thumb_tr_place, 0, -1, minidox_thumb_post_br(), (lambda sh: key_place(sh, 3, 2)), 0, -1, web_post_bl())])
 
 
     return shape
